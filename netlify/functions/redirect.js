@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
       mobile: debugInfo.isMobile,
       hasUTM: debugInfo.hasRequiredUTM,
       hasVariant: debugInfo.hasVariant,
-      target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Quiz Tés Bariátrico)' : 
+      target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Mounjaro Brasileno)' : 
               targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Chás Vercel)' : 'SITE_A (Receita Viva)'
     });
     

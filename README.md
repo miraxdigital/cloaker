@@ -23,7 +23,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=http://quiz.tesbariatrico.biz/
+SITE_B_URL=https://deskfunnel.site/mounjaro-brasileno
 SITE_C_URL=https://chas-bariatricos.vercel.app/
 ```
 
