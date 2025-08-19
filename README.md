@@ -23,7 +23,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://deskfunnel.site/mounjaro-brasileno
+SITE_B_URL=https://quiz.monjabrasileno.online/
 SITE_C_URL=https://chas-bariatricos.vercel.app/
 ```
 
@@ -111,7 +111,7 @@ O sistema registra:
 ```bash
 # Configure as variáveis de ambiente
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://rutinatesbariatricos.lovable.app/
+SITE_B_URL=https://quiz.monjabrasileno.online/
 SITE_C_URL=https://chas-bariatricos.vercel.app/
 ```
 
