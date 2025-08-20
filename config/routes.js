@@ -3,7 +3,7 @@ const config = {
   // URLs configuradas
   urls: {
     SITE_A_URL: process.env.SITE_A_URL || 'https://app.receitaviva.online/',
-    SITE_B_URL: process.env.SITE_B_URL || 'https://quiz.monjabrasileno.online/',
+    SITE_B_URL: process.env.SITE_B_URL || 'https://4m025y0l.xquiz.io/',
     SITE_C_URL: process.env.SITE_C_URL || 'https://chas-bariatricos.vercel.app/'
   },
 

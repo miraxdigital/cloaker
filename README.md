@@ -32,13 +32,13 @@ SITE_C_URL=https://chas-bariatricos.vercel.app/
 ### ✅ Redireciona para SITE_B (Rutina Tés Bariátricos)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://4m025y0l.xquiz.io/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://4m025y0l.xquiz.io/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://4m025y0l.xquiz.io/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
 ### ✅ Redireciona para SITE_C (Chás Bariátricos Vercel)
