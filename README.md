@@ -23,22 +23,22 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://4m025y0l.xquiz.io/
+SITE_B_URL=https://deskfunnel.site/mounjaro-brasileno
 SITE_C_URL=https://chas-bariatricos.vercel.app/
 ```
 
 ## Exemplos de Uso
 
-### ✅ Redireciona para SITE_B (Rutina Tés Bariátricos)
+### ✅ Redireciona para SITE_B (Mounjaro Brasileno)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://4m025y0l.xquiz.io/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://4m025y0l.xquiz.io/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://4m025y0l.xquiz.io/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
 ### ✅ Redireciona para SITE_C (Chás Bariátricos Vercel)
