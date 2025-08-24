@@ -13,18 +13,27 @@ exports.handler = async (event, context) => {
     const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i;
     const isMobile = mobileRegex.test(userAgent);
     
-    // Parameter analysis
-    const vParam = query.v || null;
+    // UTM analysis
+    const utmParams = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term'];
+    const detectedUTMs = {};
+    let utmCount = 0;
     
+    utmParams.forEach(param => {
+      if (query[param]) {
+        detectedUTMs[param] = query[param];
+        utmCount++;
+      }
+    });
+
     // Log detection
     console.log('[DETECTION]', {
       mobile: isMobile ? 'YES' : 'NO',
-      vParam: vParam || 'not present',
+      utmCount: utmCount,
       userAgent: userAgent.substring(0, 80) + '...'
     });
 
-    if (Object.keys(query).length > 0) {
-      console.log('[PARAMS DETECTED]', query);
+    if (utmCount > 0) {
+      console.log('[UTM DETECTED]', detectedUTMs);
     }
 
     // Determine redirect URL
@@ -34,8 +43,10 @@ exports.handler = async (event, context) => {
     const debugInfo = config.getDebugInfo(userAgent, query);
     console.log('[REDIRECT DECISION]', {
       mobile: debugInfo.isMobile,
-      vParam: debugInfo.vParam,
-      target: debugInfo.siteMapped
+      hasUTM: debugInfo.hasRequiredUTM,
+      hasVariant: debugInfo.hasVariant,
+      target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Mounjaro Brasileno)' : 
+              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Chás Vercel)' : 'SITE_A (Receita Viva)'
     });
     
     // Return redirect response

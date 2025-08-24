@@ -19,28 +19,38 @@ const detectionMiddleware = (req, res, next) => {
   const isMobile = mobileRegex.test(userAgent);
   
   // Análise de parâmetros UTM
-  const vParam = query.v || null;
+  const utmParams = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term'];
+  const detectedUTMs = {};
+  let utmCount = 0;
   
+  utmParams.forEach(param => {
+    if (query[param]) {
+      detectedUTMs[param] = query[param];
+      utmCount++;
+    }
+  });
+
   // Adiciona informações de detecção ao objeto de requisição
   req.detection = {
     ...requestInfo,
     isMobile: isMobile,
-    vParam: vParam,
-    allParams: query
+    utmParams: detectedUTMs,
+    utmCount: utmCount,
+    hasRequiredUTMs: utmCount >= 4 // Precisa de pelo menos 4 UTMs obrigatórios
   };
   
   // Log detalhado da detecção
   console.log('[DETECTION]', {
     ip: requestInfo.ip,
     mobile: isMobile ? 'YES' : 'NO',
-    vParam: vParam || 'not present',
+    utmCount: utmCount,
     userAgent: userAgent.substring(0, 80) + '...',
     referer: requestInfo.referer
   });
 
-  // Log dos parâmetros se existirem
-  if (Object.keys(query).length > 0) {
-    console.log('[PARAMS DETECTED]', query);
+  // Log dos UTMs se existirem
+  if (utmCount > 0) {
+    console.log('[UTM DETECTED]', detectedUTMs);
   }
 
   // Middleware para medir tempo de resposta

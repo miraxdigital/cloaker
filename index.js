@@ -36,8 +36,10 @@ app.get('/', detectionMiddleware, (req, res) => {
     const debugInfo = config.getDebugInfo(userAgent, query);
     console.log('[REDIRECT DECISION]', {
       mobile: debugInfo.isMobile,
-      vParam: debugInfo.vParam,
-      target: debugInfo.siteMapped
+      hasUTM: debugInfo.hasRequiredUTM,
+      hasVariant: debugInfo.hasVariant,
+      target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Mounjaro Brasileno)' : 
+              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Chás Vercel)' : 'SITE_A (Receita Viva)'
     });
     
     // Redirecionamento 302 (temporário)
@@ -91,11 +93,9 @@ app.use('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`[SERVER] Mobile UTM Router running on port ${PORT}`);
-  console.log(`[CONFIG] SITE_A_URL (v=a): ${config.urls.SITE_A_URL}`);
-  console.log(`[CONFIG] SITE_B_URL (v=b): ${config.urls.SITE_B_URL}`);
-  console.log(`[CONFIG] SITE_C_URL (v=c): ${config.urls.SITE_C_URL}`);
-  console.log(`[CONFIG] FALLBACK_URL (no v): ${config.urls.FALLBACK_URL}`);
-  console.log(`[LOGIC] v=a -> SITE_A | v=b -> SITE_B | v=c -> SITE_C | no v -> FALLBACK`);
+  console.log(`[CONFIG] SITE_A_URL: ${config.urls.SITE_A_URL}`);
+  console.log(`[CONFIG] SITE_B_URL: ${config.urls.SITE_B_URL}`);
+  console.log(`[LOGIC] Mobile + UTM (4 params) = SITE_B | Others = SITE_A`);
 });
 
 module.exports = app;

@@ -2,10 +2,9 @@
 const config = {
   // URLs configuradas
   urls: {
-    SITE_A_URL: process.env.SITE_A_URL || 'https://quiz.pilatesencasa.lat',
-    SITE_B_URL: process.env.SITE_B_URL || 'https://chas-bariatricos.vercel.app',
-    SITE_C_URL: process.env.SITE_C_URL || 'https://app.receitaviva.online/', // Fallback
-    FALLBACK_URL: process.env.FALLBACK_URL || 'https://app.receitaviva.online/' // URL padrão quando não há parâmetro v
+    SITE_A_URL: process.env.SITE_A_URL || 'https://app.receitaviva.online/',
+    SITE_B_URL: process.env.SITE_B_URL || 'https://deskfunnel.site/mounjaro-brasileno',
+    SITE_C_URL: process.env.SITE_C_URL || 'https://chas-bariatricos.vercel.app/'
   },
 
   // Função para detectar dispositivo móvel
@@ -16,76 +15,84 @@ const config = {
     return mobileRegex.test(userAgent);
   },
 
-  // Função para determinar URL baseada no parâmetro v
-  getUrlByVariant(vParam) {
-    if (!vParam || vParam.trim() === '') {
-      console.log(`[VARIANT CHECK] No 'v' parameter -> FALLBACK`);
-      return this.urls.FALLBACK_URL;
-    }
+  // Função para verificar se possui parâmetros UTM necessários
+  hasRequiredUTMParams(query) {
+    const requiredParams = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content'];
+    
+    // Verifica se todos os parâmetros obrigatórios estão presentes
+    return requiredParams.every(param => {
+      const hasParam = query[param] && query[param].trim() !== '';
+      if (!hasParam) {
+        console.log(`[UTM CHECK] Missing required parameter: ${param}`);
+      }
+      return hasParam;
+    });
+  },
 
-    const variant = vParam.toLowerCase().trim();
-    console.log(`[VARIANT CHECK] Parameter 'v': ${vParam} (normalized: ${variant})`);
-
-    switch (variant) {
-      case 'a':
-        console.log(`[VARIANT CHECK] v=a -> SITE_A (Pilates en Casa)`);
-        return this.urls.SITE_A_URL;
-      
-      case 'b':
-        console.log(`[VARIANT CHECK] v=b -> SITE_B (Chás Bariátricos)`);
-        return this.urls.SITE_B_URL;
-      
-      case 'c':
-        console.log(`[VARIANT CHECK] v=c -> SITE_C (Receita Viva)`);
-        return this.urls.SITE_C_URL;
-      
-      default:
-        console.log(`[VARIANT CHECK] Unknown variant '${variant}' -> FALLBACK`);
-        return this.urls.FALLBACK_URL;
-    }
+  // Função para verificar se deve ir para SITE_C (usando parâmetro 'v')
+  shouldRedirectToSiteB(query) {
+    // Verifica se existe o parâmetro 'v' (versão/variant)
+    const hasVariant = query.v && query.v.trim() !== '';
+    
+    console.log(`[VARIANT CHECK] Parameter 'v': ${query.v || 'not present'}, Redirect to SITE_B: ${hasVariant}`);
+    return hasVariant;
   },
 
   // Função principal para determinar URL de redirecionamento
   getRedirectUrl(userAgent, query) {
     const isMobile = this.isMobileDevice(userAgent);
-    const vParam = query.v || null;
+    const hasUTM = this.hasRequiredUTMParams(query);
+    const shouldGoToSiteB = this.shouldRedirectToSiteB(query);
     
-    console.log(`[REDIRECT LOGIC] Mobile: ${isMobile}, v parameter: ${vParam || 'not present'}`);
+    console.log(`[REDIRECT LOGIC] Mobile: ${isMobile}, UTM: ${hasUTM}, Has Variant: ${shouldGoToSiteB}`);
     
-    // Log dos parâmetros recebidos (para debug)
-    const allParams = Object.keys(query);
-    if (allParams.length > 0) {
-      console.log('[PARAMS RECEIVED]', query);
+    // Log dos parâmetros recebidos
+    const allParams = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term', 'v'];
+    const receivedParams = {};
+    allParams.forEach(param => {
+      if (query[param]) {
+        receivedParams[param] = query[param];
+      }
+    });
+    
+    if (Object.keys(receivedParams).length > 0) {
+      console.log('[PARAMS RECEIVED]', receivedParams);
     }
 
-    // Determina URL baseada apenas no parâmetro v
-    const targetUrl = this.getUrlByVariant(vParam);
-    
-    // Log da decisão final
-    const siteName = targetUrl === this.urls.SITE_A_URL ? 'SITE_A (Pilates en Casa)' :
-                     targetUrl === this.urls.SITE_B_URL ? 'SITE_B (Chás Bariátricos)' :
-                     targetUrl === this.urls.SITE_C_URL ? 'SITE_C (Receita Viva)' : 'FALLBACK';
-    
-    console.log(`[REDIRECT DECISION] Target: ${siteName}`);
-    
-    return targetUrl;
+    // PRIORIDADE 1: Mobile + UTM + Parâmetro 'v' = SITE_B_URL
+    if (isMobile && hasUTM && shouldGoToSiteB) {
+      console.log('[REDIRECT] Mobile + UTM + Variant -> SITE_B_URL');
+      return this.urls.SITE_B_URL;
+    }
+
+    // PRIORIDADE 2: Mobile + UTM (sem parâmetro 'v') = SITE_C_URL
+    if (isMobile && hasUTM) {
+      console.log('[REDIRECT] Mobile + UTM (no variant) -> SITE_C_URL');
+      return this.urls.SITE_C_URL;
+    }
+
+    // FALLBACK: Qualquer outra condição = SITE_A_URL
+    console.log('[REDIRECT] Default conditions -> SITE_A_URL');
+    return this.urls.SITE_A_URL;
   },
 
   // Função para obter informações de debug
   getDebugInfo(userAgent, query) {
-    const vParam = query.v || null;
-    const targetUrl = this.getRedirectUrl(userAgent, query);
-    
     return {
       isMobile: this.isMobileDevice(userAgent),
-      vParam: vParam,
-      vParamNormalized: vParam ? vParam.toLowerCase().trim() : null,
-      allParams: query,
+      hasRequiredUTM: this.hasRequiredUTMParams(query),
+      hasVariant: this.shouldRedirectToSiteB(query),
+      variantParam: query.v || null,
+      utmParams: {
+        utm_source: query.utm_source || null,
+        utm_campaign: query.utm_campaign || null,
+        utm_medium: query.utm_medium || null,
+        utm_content: query.utm_content || null,
+        utm_term: query.utm_term || null,
+        v: query.v || null
+      },
       userAgent: userAgent ? userAgent.substring(0, 100) + '...' : 'Unknown',
-      redirectUrl: targetUrl,
-      siteMapped: targetUrl === this.urls.SITE_A_URL ? 'SITE_A (Pilates en Casa)' :
-                  targetUrl === this.urls.SITE_B_URL ? 'SITE_B (Chás Bariátricos)' :
-                  targetUrl === this.urls.SITE_C_URL ? 'SITE_C (Receita Viva)' : 'FALLBACK'
+      redirectUrl: this.getRedirectUrl(userAgent, query)
     };
   }
 };
