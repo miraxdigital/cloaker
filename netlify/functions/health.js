@@ -11,9 +11,10 @@ exports.handler = async (event, context) => {
       status: 'OK',
       timestamp: new Date().toISOString(),
       urls: {
-        SITE_A: config.urls.SITE_A_URL,
-        SITE_B: config.urls.SITE_B_URL,
-        SITE_C: config.urls.SITE_C_URL
+        'SITE_A (v=a)': config.urls.SITE_A_URL,
+        'SITE_B (v=b)': config.urls.SITE_B_URL,
+        'SITE_C (v=c)': config.urls.SITE_C_URL,
+        'FALLBACK (no v)': config.urls.FALLBACK_URL
       }
     }, null, 2)
   };

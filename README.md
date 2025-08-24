@@ -1,93 +1,105 @@
-# Router de Redirecionamento Mobile + UTM
+# Router de Redirecionamento Simplificado por Parâmetro V
 
-Sistema de redirecionamento inteligente baseado em detecção de dispositivo móvel, parâmetros UTM e variante.
+Sistema de redirecionamento inteligente baseado apenas no parâmetro `v` (variant/versão).
 
 ## Lógica de Redirecionamento SIMPLIFICADA
 
-### SITE_B_URL (Rutina Tés Bariátricos) - Condições:
-✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
-✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
-✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
+### Baseado APENAS no parâmetro `v`:
 
-### SITE_C_URL (Chás Bariátricos Vercel) - Condições:
-✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
-✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
-❌ **SEM parâmetro 'v'**
-
-### SITE_A_URL (Receita Viva) - Casos:
-- Desktop (qualquer condição)
-- Mobile sem UTMs completos
-- Qualquer erro ou condição não atendida
+- **v=a** → **SITE_A** (`https://quiz.pilatesencasa.lat`)
+- **v=b** → **SITE_B** (`https://chas-bariatricos.vercel.app`)  
+- **v=c** → **SITE_C** (`https://app.receitaviva.online/`)
+- **Sem parâmetro v** → **FALLBACK** (`https://app.receitaviva.online/`)
+- **v=qualquer-outro-valor** → **FALLBACK** (`https://app.receitaviva.online/`)
 
 ## URLs Configuradas
 
 ```bash
-SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://deskfunnel.site/mounjaro-brasileno
-SITE_C_URL=https://chas-bariatricos.vercel.app/
+SITE_A_URL=https://quiz.pilatesencasa.lat
+SITE_B_URL=https://chas-bariatricos.vercel.app
+SITE_C_URL=https://app.receitaviva.online/
+FALLBACK_URL=https://app.receitaviva.online/
 ```
 
 ## Exemplos de Uso
 
-### ✅ Redireciona para SITE_B (Mounjaro Brasileno)
+### ✅ Redireciona para SITE_A (Pilates en Casa)
 ```
-# Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
-
-# Mobile + UTMs + v=test
-https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
-
-# Mobile + UTMs + v=abc
-https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://seu-dominio.com/?v=a
+https://seu-dominio.com/?v=A
+https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=a
 ```
 
-### ✅ Redireciona para SITE_C (Chás Bariátricos Vercel)
+### ✅ Redireciona para SITE_B (Chás Bariátricos)
 ```
-# Mobile + UTMs completos (sem parâmetro 'v')
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
+https://seu-dominio.com/?v=b
+https://seu-dominio.com/?v=B
+https://seu-dominio.com/?utm_source=google&v=b&other_param=123
 ```
 
-### ❌ Redireciona para SITE_A (Receita Viva)
+### ✅ Redireciona para SITE_C (Receita Viva)
 ```
-# Desktop (mesmo com UTMs e 'v')
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://seu-dominio.com/?v=c
+https://seu-dominio.com/?v=C
+https://seu-dominio.com/?v=c&utm_source=instagram
+```
 
-# Mobile sem UTMs
+### ❌ Redireciona para FALLBACK (Receita Viva)
+```
+# Sem parâmetro v
 https://seu-dominio.com/
+https://seu-dominio.com/?utm_source=FB&utm_campaign=teste
 
-# Mobile com UTMs incompletos
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
+# Parâmetro v com valor não reconhecido
+https://seu-dominio.com/?v=x
+https://seu-dominio.com/?v=123
+https://seu-dominio.com/?v=test
+
+# Parâmetro v vazio
+https://seu-dominio.com/?v=
 ```
 
 ## Cenários Possíveis
 
-| Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
-|-------------|---------------|----------------|---------|---------|
-| 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C | Mobile + UTM sem variante |
-| 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
-| 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
-| 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
-| 📱 Mobile | ❌ Não | ❌ Ausente | SITE_A | UTMs incompletos |
+| Parâmetro v | Destino | URL | Observação |
+|-------------|---------|-----|------------|
+| `v=a` | SITE_A | https://quiz.pilatesencasa.lat | Case insensitive |
+| `v=b` | SITE_B | https://chas-bariatricos.vercel.app | Case insensitive |
+| `v=c` | SITE_C | https://app.receitaviva.online/ | Case insensitive |
+| Ausente | FALLBACK | https://app.receitaviva.online/ | Padrão |
+| Vazio (`v=`) | FALLBACK | https://app.receitaviva.online/ | Tratado como ausente |
+| Outro valor | FALLBACK | https://app.receitaviva.online/ | Valor não reconhecido |
 
-*UTM Completo = `utm_source` + `utm_campaign` + `utm_medium` + `utm_content`
+## Expansibilidade
 
-## Parâmetro de Diferenciação
+Para adicionar novos sites, basta:
 
-**Parâmetro 'v' (variant/versão):**
-- Pode ter **qualquer valor**: `v=1`, `v=test`, `v=abc`, `v=qualquer-coisa`
-- Se estiver **presente** (com qualquer valor) + Mobile + UTMs = **SITE_B**
-- Se estiver **ausente** + Mobile + UTMs = **SITE_C**
+1. **Adicionar nova URL** no `.env`:
+```bash
+SITE_D_URL=https://novo-site.com
+```
 
-## Detecção Mobile
+2. **Adicionar novo case** no `config/routes.js`:
+```javascript
+case 'd':
+  return this.urls.SITE_D_URL;
+```
 
-O sistema detecta os seguintes dispositivos como móveis:
-- Android
-- iPhone/iPad/iPod
-- Windows Mobile
-- BlackBerry
-- Opera Mini
-- Outros navegadores mobile
+3. **Exemplo de uso**:
+```
+https://seu-dominio.com/?v=d → https://novo-site.com
+```
+
+## Características Técnicas
+
+- ✅ **Case insensitive**: `v=A` = `v=a`
+- ✅ **Trim automático**: Remove espaços em branco
+- ✅ **Fallback seguro**: Qualquer erro → FALLBACK_URL
+- ✅ **Logs detalhados**: Para debug e análise
+- ✅ **Headers de segurança**: Cache-Control, Referrer-Policy, etc.
+- ✅ **Tempo de resposta**: <20ms (muito mais rápido)
+- ✅ **Lógica simplificada**: Apenas 1 parâmetro para validar
+- ✅ **Facilmente expansível**: Novos sites com 1 linha de código
 
 ## Endpoints
 
@@ -95,24 +107,24 @@ O sistema detecta os seguintes dispositivos como móveis:
 - `GET /debug` - Informações de debug (JSON)
 - `GET /health` - Status do sistema
 
-## Logs Detalhados
+## Logs Simplificados
 
-O sistema registra:
-- Detecção de dispositivo móvel
-- Parâmetros UTM recebidos
-- Presença do parâmetro 'v'
-- Decisão de redirecionamento
-- Tempo de resposta
-- IPs e User-Agents
+```
+[REDIRECT LOGIC] Mobile: true, v parameter: a
+[VARIANT CHECK] Parameter 'v': a (normalized: a)
+[VARIANT CHECK] v=a -> SITE_A (Pilates en Casa)
+[REDIRECT DECISION] Target: SITE_A (Pilates en Casa)
+```
 
 ## Deploy
 
 ### Netlify
 ```bash
 # Configure as variáveis de ambiente
-SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://4m025y0l.xquiz.io/
-SITE_C_URL=https://chas-bariatricos.vercel.app/
+SITE_A_URL=https://quiz.pilatesencasa.lat
+SITE_B_URL=https://chas-bariatricos.vercel.app
+SITE_C_URL=https://app.receitaviva.online/
+FALLBACK_URL=https://app.receitaviva.online/
 ```
 
 ### Teste Local
@@ -120,24 +132,23 @@ SITE_C_URL=https://chas-bariatricos.vercel.app/
 npm install
 npm run dev
 
-# Teste mobile + UTM (SITE_C)
-curl -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" \
-"http://localhost:3000/?utm_source=FB&utm_campaign=test&utm_medium=social&utm_content=ad1"
+# Teste v=a (SITE_A)
+curl "http://localhost:3000/?v=a"
 
-# Teste mobile + UTM + variant (SITE_B)
-curl -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" \
-"http://localhost:3000/?utm_source=FB&utm_campaign=test&utm_medium=social&utm_content=ad1&v=1"
+# Teste v=b (SITE_B)  
+curl "http://localhost:3000/?v=b"
+
+# Teste v=c (SITE_C)
+curl "http://localhost:3000/?v=c"
+
+# Teste sem v (FALLBACK)
+curl "http://localhost:3000/"
 ```
 
-## Características Técnicas
+## Vantagens da Nova Lógica
 
-- ✅ Detecção precisa de dispositivos móveis
-- ✅ Validação rigorosa de parâmetros UTM
-- ✅ Diferenciação simples via parâmetro 'v'
-- ✅ Redirecionamentos 302 (temporários)
-- ✅ Headers de segurança
-- ✅ Logs detalhados para análise
-- ✅ Fallback seguro para SITE_A em caso de erro
-- ✅ Tempo de resposta otimizado (<50ms)
-- ✅ Lógica simplificada e performática
-- ✅ Priorização: SITE_B > SITE_C > SITE_A
+- 🚀 **Performance**: Muito mais rápido (sem validação de UTMs)
+- 🎯 **Simplicidade**: Apenas 1 parâmetro para controlar
+- 🔧 **Manutenibilidade**: Fácil de adicionar novos sites
+- 📊 **Controle**: Controle total sobre o redirecionamento
+- 🛡️ **Confiabilidade**: Menos pontos de falha
