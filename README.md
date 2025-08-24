@@ -4,13 +4,14 @@ Sistema de redirecionamento inteligente baseado apenas no parâmetro `v` (varian
 
 ## Lógica de Redirecionamento SIMPLIFICADA
 
-### Baseado APENAS no parâmetro `v`:
+### Baseado em Dispositivo Móvel + parâmetro `v`:
 
-- **v=a** → **SITE_A** (`https://quiz.pilatesencasa.lat`)
-- **v=b** → **SITE_B** (`https://chas-bariatricos.vercel.app`)  
-- **v=c** → **SITE_C** (`https://app.receitaviva.online/`)
-- **Sem parâmetro v** → **FALLBACK** (`https://app.receitaviva.online/`)
-- **v=qualquer-outro-valor** → **FALLBACK** (`https://app.receitaviva.online/`)
+- **📱 Mobile + v=a** → **SITE_A** (`https://quiz.pilatesencasa.lat`)
+- **📱 Mobile + v=b** → **SITE_B** (`https://chas-bariatricos.vercel.app`)  
+- **📱 Mobile + v=c** → **SITE_C** (`https://app.receitaviva.online/`)
+- **💻 Desktop (qualquer parâmetro)** → **FALLBACK** (`https://app.receitaviva.online/`)
+- **📱 Mobile sem parâmetro v** → **FALLBACK** (`https://app.receitaviva.online/`)
+- **📱 Mobile + v=qualquer-outro-valor** → **FALLBACK** (`https://app.receitaviva.online/`)
 
 ## URLs Configuradas
 
@@ -23,52 +24,55 @@ FALLBACK_URL=https://app.receitaviva.online/
 
 ## Exemplos de Uso
 
-### ✅ Redireciona para SITE_A (Pilates en Casa)
+### ✅ Mobile - Redireciona para SITE_A (Pilates en Casa)
 ```
-https://seu-dominio.com/?v=a
-https://seu-dominio.com/?v=A
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=a
-```
-
-### ✅ Redireciona para SITE_B (Chás Bariátricos)
-```
-https://seu-dominio.com/?v=b
-https://seu-dominio.com/?v=B
-https://seu-dominio.com/?utm_source=google&v=b&other_param=123
+https://seu-dominio.com/?v=a (Mobile)
+https://seu-dominio.com/?v=A (Mobile)
+https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=a (Mobile)
 ```
 
-### ✅ Redireciona para SITE_C (Receita Viva)
+### ✅ Mobile - Redireciona para SITE_B (Chás Bariátricos)
 ```
-https://seu-dominio.com/?v=c
-https://seu-dominio.com/?v=C
-https://seu-dominio.com/?v=c&utm_source=instagram
+https://seu-dominio.com/?v=b (Mobile)
+https://seu-dominio.com/?v=B (Mobile)
+https://seu-dominio.com/?utm_source=google&v=b&other_param=123 (Mobile)
+```
+
+### ✅ Mobile - Redireciona para SITE_C (Receita Viva)
+```
+https://seu-dominio.com/?v=c (Mobile)
+https://seu-dominio.com/?v=C (Mobile)
+https://seu-dominio.com/?v=c&utm_source=instagram (Mobile)
 ```
 
 ### ❌ Redireciona para FALLBACK (Receita Viva)
 ```
-# Sem parâmetro v
-https://seu-dominio.com/
-https://seu-dominio.com/?utm_source=FB&utm_campaign=teste
+# Desktop (qualquer parâmetro)
+https://seu-dominio.com/?v=a (Desktop)
+https://seu-dominio.com/?v=b (Desktop)
+https://seu-dominio.com/ (Desktop)
 
-# Parâmetro v com valor não reconhecido
-https://seu-dominio.com/?v=x
-https://seu-dominio.com/?v=123
-https://seu-dominio.com/?v=test
+# Mobile sem parâmetro v
+https://seu-dominio.com/ (Mobile)
+https://seu-dominio.com/?utm_source=FB&utm_campaign=teste (Mobile)
 
-# Parâmetro v vazio
-https://seu-dominio.com/?v=
+# Mobile com parâmetro v inválido
+https://seu-dominio.com/?v=x (Mobile)
+https://seu-dominio.com/?v=123 (Mobile)
+https://seu-dominio.com/?v= (Mobile)
 ```
 
 ## Cenários Possíveis
 
-| Parâmetro v | Destino | URL | Observação |
-|-------------|---------|-----|------------|
-| `v=a` | SITE_A | https://quiz.pilatesencasa.lat | Case insensitive |
-| `v=b` | SITE_B | https://chas-bariatricos.vercel.app | Case insensitive |
-| `v=c` | SITE_C | https://app.receitaviva.online/ | Case insensitive |
-| Ausente | FALLBACK | https://app.receitaviva.online/ | Padrão |
-| Vazio (`v=`) | FALLBACK | https://app.receitaviva.online/ | Tratado como ausente |
-| Outro valor | FALLBACK | https://app.receitaviva.online/ | Valor não reconhecido |
+| Dispositivo | Parâmetro v | Destino | URL | Observação |
+|-------------|-------------|---------|-----|------------|
+| 📱 Mobile | `v=a` | SITE_A | https://quiz.pilatesencasa.lat | Case insensitive |
+| 📱 Mobile | `v=b` | SITE_B | https://chas-bariatricos.vercel.app | Case insensitive |
+| 📱 Mobile | `v=c` | SITE_C | https://app.receitaviva.online/ | Case insensitive |
+| 📱 Mobile | Ausente | FALLBACK | https://app.receitaviva.online/ | Mobile sem v |
+| 📱 Mobile | Vazio (`v=`) | FALLBACK | https://app.receitaviva.online/ | Tratado como ausente |
+| 📱 Mobile | Outro valor | FALLBACK | https://app.receitaviva.online/ | Valor não reconhecido |
+| 💻 Desktop | Qualquer | FALLBACK | https://app.receitaviva.online/ | Desktop sempre fallback |
 
 ## Expansibilidade
 
@@ -95,10 +99,11 @@ https://seu-dominio.com/?v=d → https://novo-site.com
 - ✅ **Case insensitive**: `v=A` = `v=a`
 - ✅ **Trim automático**: Remove espaços em branco
 - ✅ **Fallback seguro**: Qualquer erro → FALLBACK_URL
+- ✅ **Detecção de dispositivo**: Mobile vs Desktop
 - ✅ **Logs detalhados**: Para debug e análise
 - ✅ **Headers de segurança**: Cache-Control, Referrer-Policy, etc.
-- ✅ **Tempo de resposta**: <20ms (muito mais rápido)
-- ✅ **Lógica simplificada**: Apenas 1 parâmetro para validar
+- ✅ **Tempo de resposta**: <30ms 
+- ✅ **Lógica simplificada**: Dispositivo + 1 parâmetro
 - ✅ **Facilmente expansível**: Novos sites com 1 linha de código
 
 ## Endpoints
@@ -113,7 +118,7 @@ https://seu-dominio.com/?v=d → https://novo-site.com
 [REDIRECT LOGIC] Mobile: true, v parameter: a
 [VARIANT CHECK] Parameter 'v': a (normalized: a)
 [VARIANT CHECK] v=a -> SITE_A (Pilates en Casa)
-[REDIRECT DECISION] Target: SITE_A (Pilates en Casa)
+[REDIRECT DECISION] Mobile + v=a -> SITE_A (Pilates en Casa)
 ```
 
 ## Deploy
@@ -132,23 +137,27 @@ FALLBACK_URL=https://app.receitaviva.online/
 npm install
 npm run dev
 
-# Teste v=a (SITE_A)
-curl "http://localhost:3000/?v=a"
+# Teste Mobile v=a (SITE_A)
+curl -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" "http://localhost:3000/?v=a"
 
-# Teste v=b (SITE_B)  
-curl "http://localhost:3000/?v=b"
+# Teste Mobile v=b (SITE_B)  
+curl -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" "http://localhost:3000/?v=b"
 
-# Teste v=c (SITE_C)
-curl "http://localhost:3000/?v=c"
+# Teste Mobile v=c (SITE_C)
+curl -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" "http://localhost:3000/?v=c"
 
-# Teste sem v (FALLBACK)
+# Teste Desktop (FALLBACK)
 curl "http://localhost:3000/"
+
+# Teste Mobile sem v (FALLBACK)
+curl -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" "http://localhost:3000/"
 ```
 
 ## Vantagens da Nova Lógica
 
-- 🚀 **Performance**: Muito mais rápido (sem validação de UTMs)
-- 🎯 **Simplicidade**: Apenas 1 parâmetro para controlar
+- 🚀 **Performance**: Rápido (sem validação de UTMs)
+- 🎯 **Simplicidade**: Dispositivo + 1 parâmetro para controlar
+- 📱 **Segmentação**: Mobile vs Desktop
 - 🔧 **Manutenibilidade**: Fácil de adicionar novos sites
 - 📊 **Controle**: Controle total sobre o redirecionamento
 - 🛡️ **Confiabilidade**: Menos pontos de falha

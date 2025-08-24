@@ -58,8 +58,24 @@ const config = {
       console.log('[PARAMS RECEIVED]', query);
     }
 
-    // Determina URL baseada apenas no parâmetro v
-    const targetUrl = this.getUrlByVariant(vParam);
+    // NOVA LÓGICA: Mobile + parâmetro v válido
+    if (isMobile && vParam) {
+      const targetUrl = this.getUrlByVariant(vParam);
+      // Se o parâmetro v é válido (não retorna fallback), usa o site específico
+      if (targetUrl !== this.urls.FALLBACK_URL) {
+        const siteName = targetUrl === this.urls.SITE_A_URL ? 'SITE_A (Pilates en Casa)' :
+                         targetUrl === this.urls.SITE_B_URL ? 'SITE_B (Chás Bariátricos)' :
+                         targetUrl === this.urls.SITE_C_URL ? 'SITE_C (Receita Viva)' : 'UNKNOWN';
+        
+        console.log(`[REDIRECT DECISION] Mobile + v=${vParam} -> ${siteName}`);
+        return targetUrl;
+      }
+    }
+    
+    // FALLBACK: Desktop OU Mobile sem v válido
+    console.log(`[REDIRECT DECISION] ${isMobile ? 'Mobile' : 'Desktop'} without valid v -> FALLBACK`);
+    return this.urls.FALLBACK_URL;
+  },
     
     // Log da decisão final
     const siteName = targetUrl === this.urls.SITE_A_URL ? 'SITE_A (Pilates en Casa)' :
@@ -75,9 +91,10 @@ const config = {
   getDebugInfo(userAgent, query) {
     const vParam = query.v || null;
     const targetUrl = this.getRedirectUrl(userAgent, query);
+    const isMobile = this.isMobileDevice(userAgent);
     
     return {
-      isMobile: this.isMobileDevice(userAgent),
+      isMobile: isMobile,
       vParam: vParam,
       vParamNormalized: vParam ? vParam.toLowerCase().trim() : null,
       allParams: query,
@@ -85,7 +102,10 @@ const config = {
       redirectUrl: targetUrl,
       siteMapped: targetUrl === this.urls.SITE_A_URL ? 'SITE_A (Pilates en Casa)' :
                   targetUrl === this.urls.SITE_B_URL ? 'SITE_B (Chás Bariátricos)' :
-                  targetUrl === this.urls.SITE_C_URL ? 'SITE_C (Receita Viva)' : 'FALLBACK'
+                  targetUrl === this.urls.SITE_C_URL ? 'SITE_C (Receita Viva)' : 'FALLBACK',
+      logic: isMobile ? 
+        (vParam && this.getUrlByVariant(vParam) !== this.urls.FALLBACK_URL ? `Mobile + v=${vParam} -> Specific Site` : 'Mobile without valid v -> Fallback') :
+        'Desktop -> Fallback'
     };
   }
 };
