@@ -38,7 +38,7 @@ app.get('/', detectionMiddleware, (req, res) => {
       mobile: debugInfo.isMobile,
       hasUTM: debugInfo.hasRequiredUTM,
       hasVariant: debugInfo.hasVariant,
-      target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Mounjaro Brasileno)' : 
+      target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Pilates En Casa)' : 
               targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Chás Vercel)' : 'SITE_A (Receita Viva)'
     });
     

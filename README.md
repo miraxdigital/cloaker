@@ -23,7 +23,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://deskfunnel.site/mounjaro-brasileno
+SITE_B_URL=https://quiz.pilatesencasa.lat/
 SITE_C_URL=https://chas-bariatricos.vercel.app/
 ```
 
@@ -32,13 +32,13 @@ SITE_C_URL=https://chas-bariatricos.vercel.app/
 ### ✅ Redireciona para SITE_B (Mounjaro Brasileno)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://quiz.pilatesencasa.lat/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://quiz.pilatesencasa.lat/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://deskfunnel.site/mounjaro-brasileno/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://quiz.pilatesencasa.lat/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
 ### ✅ Redireciona para SITE_C (Chás Bariátricos Vercel)
