@@ -2,25 +2,56 @@ const detectionMiddleware = (req, res, next) => {
   const startTime = Date.now();
   
   // Coleta informações básicas da requisição
+  const userAgent = req.headers['user-agent'] || '';
+  const query = req.query || {};
+  
   const requestInfo = {
     ip: req.ip || req.connection.remoteAddress || req.headers['x-forwarded-for'],
-    userAgent: req.headers['user-agent'] || 'Unknown',
+    userAgent: userAgent,
     referer: req.headers.referer || req.headers.referrer || 'Direct',
     acceptLanguage: req.headers['accept-language'] || 'Unknown',
-    source: req.query.source || 'default',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    query: query
   };
 
-  // Adiciona informações ao objeto de requisição
-  req.detection = requestInfo;
+  // Detecção específica de dispositivo móvel
+  const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i;
+  const isMobile = mobileRegex.test(userAgent);
   
-  // Log da detecção
+  // Análise de parâmetros UTM
+  const utmParams = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term'];
+  const detectedUTMs = {};
+  let utmCount = 0;
+  
+  utmParams.forEach(param => {
+    if (query[param]) {
+      detectedUTMs[param] = query[param];
+      utmCount++;
+    }
+  });
+
+  // Adiciona informações de detecção ao objeto de requisição
+  req.detection = {
+    ...requestInfo,
+    isMobile: isMobile,
+    utmParams: detectedUTMs,
+    utmCount: utmCount,
+    hasRequiredUTMs: utmCount >= 4 // Precisa de pelo menos 4 UTMs obrigatórios
+  };
+  
+  // Log detalhado da detecção
   console.log('[DETECTION]', {
     ip: requestInfo.ip,
-    source: requestInfo.source,
-    userAgent: requestInfo.userAgent.substring(0, 100) + '...',
+    mobile: isMobile ? 'YES' : 'NO',
+    utmCount: utmCount,
+    userAgent: userAgent.substring(0, 80) + '...',
     referer: requestInfo.referer
   });
+
+  // Log dos UTMs se existirem
+  if (utmCount > 0) {
+    console.log('[UTM DETECTED]', detectedUTMs);
+  }
 
   // Middleware para medir tempo de resposta
   res.on('finish', () => {

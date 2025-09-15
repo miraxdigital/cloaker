@@ -26,17 +26,42 @@ app.use((req, res, next) => {
 // Rota principal de redirecionamento
 app.get('/', detectionMiddleware, (req, res) => {
   try {
-    const source = req.query.source;
-    const targetUrl = config.getRedirectUrl(source);
+    const userAgent = req.headers['user-agent'] || '';
+    const query = req.query || {};
     
-    console.log(`[REDIRECT] Source: ${source || 'default'} -> ${targetUrl}`);
+    // Determina URL de redirecionamento baseado na lógica
+    const targetUrl = config.getRedirectUrl(userAgent, query);
+    
+    // Log da decisão de redirecionamento
+    const debugInfo = config.getDebugInfo(userAgent, query);
+    console.log('[REDIRECT DECISION]', {
+      mobile: debugInfo.isMobile,
+      hasUTM: debugInfo.hasRequiredUTM,
+      hasVariant: debugInfo.hasVariant,
+      target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Pilates En Casa)' : 
+              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Monjaro Japonês)' : 'SITE_A (Receita Viva)'
+    });
     
     // Redirecionamento 302 (temporário)
     res.status(302).redirect(targetUrl);
   } catch (error) {
     console.error('[ERROR]', error.message);
-    res.status(500).send('Internal Server Error');
+    // Em caso de erro, redireciona para SITE_A_URL como fallback
+    res.status(302).redirect(config.urls.SITE_A_URL);
   }
+});
+
+// Rota de debug (para testes)
+app.get('/debug', detectionMiddleware, (req, res) => {
+  const userAgent = req.headers['user-agent'] || '';
+  const query = req.query || {};
+  const debugInfo = config.getDebugInfo(userAgent, query);
+  
+  res.status(200).json({
+    ...debugInfo,
+    urls: config.urls,
+    timestamp: new Date().toISOString()
+  });
 });
 
 // Rota de health check
@@ -44,25 +69,33 @@ app.get('/health', (req, res) => {
   res.status(200).json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    urls: {
+      SITE_A: config.urls.SITE_A_URL,
+      SITE_B: config.urls.SITE_B_URL,
+      SITE_C: config.urls.SITE_C_URL
+    }
   });
 });
 
 // Middleware de erro
 app.use((err, req, res, next) => {
   console.error('[ERROR]', err);
-  res.status(500).send('Something went wrong!');
+  // Em caso de erro, redireciona para SITE_A_URL
+  res.status(302).redirect(config.urls.SITE_A_URL);
 });
 
-// 404 handler
+// 404 handler - redireciona para SITE_A_URL
 app.use('*', (req, res) => {
-  console.log(`[404] Path not found: ${req.originalUrl}`);
-  res.status(404).send('Page not found');
+  console.log(`[404] Path not found: ${req.originalUrl} - Redirecting to SITE_A`);
+  res.status(302).redirect(config.urls.SITE_A_URL);
 });
 
 app.listen(PORT, () => {
-  console.log(`[SERVER] Router running on port ${PORT}`);
-  console.log(`[CONFIG] Default URL: ${config.getRedirectUrl()}`);
+  console.log(`[SERVER] Mobile UTM Router running on port ${PORT}`);
+  console.log(`[CONFIG] SITE_A_URL: ${config.urls.SITE_A_URL}`);
+  console.log(`[CONFIG] SITE_B_URL: ${config.urls.SITE_B_URL}`);
+  console.log(`[LOGIC] Mobile + UTM (4 params) = SITE_B | Others = SITE_A`);
 });
 
 module.exports = app;
