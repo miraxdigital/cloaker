@@ -4,12 +4,12 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ## Lógica de Redirecionamento SIMPLIFICADA
 
-### SITE_B_URL (Rutina Tés Bariátricos) - Condições:
+### SITE_B_URL (Mounjaro de los Pobres) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
 
-### SITE_C_URL (Chás Bariátricos Vercel) - Condições:
+### SITE_C_URL (Monjaro Japonês) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ❌ **SEM parâmetro 'v'**
@@ -23,25 +23,25 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://quiz.pilatesencasa.lat/
+SITE_B_URL=https://mounjaro-de-los-pobres.lovable.app/
 SITE_C_URL=https://monjarojapones.lovable.app/
 ```
 
 ## Exemplos de Uso
 
-### ✅ Redireciona para SITE_B (Mounjaro Brasileno)
+### ✅ Redireciona para SITE_B (Mounjaro de los Pobres)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://quiz.pilatesencasa.lat/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://mounjaro-de-los-pobres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://quiz.pilatesencasa.lat/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://mounjaro-de-los-pobres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://quiz.pilatesencasa.lat/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://mounjaro-de-los-pobres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
-### ✅ Redireciona para SITE_C (Chás Bariátricos Vercel)
+### ✅ Redireciona para SITE_C (Monjaro Japonês)
 ```
 # Mobile + UTMs completos (sem parâmetro 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
@@ -111,8 +111,8 @@ O sistema registra:
 ```bash
 # Configure as variáveis de ambiente
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://4m025y0l.xquiz.io/
-SITE_C_URL=https://chas-bariatricos.vercel.app/
+SITE_B_URL=https://mounjaro-de-los-pobres.lovable.app/
+SITE_C_URL=https://monjarojapones.lovable.app/
 ```
 
 ### Teste Local
