@@ -24,7 +24,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
 SITE_B_URL=https://mounjaro-de-los-pobres.lovable.app/
-SITE_C_URL=https://mounjaro-de-los-pobres.lovable.app/
+SITE_C_URL=https://monjarojapones.lovable.app/
 ```
 
 ## Exemplos de Uso
@@ -64,7 +64,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C | Mobile + UTM sem variante (mesma URL do SITE_B) |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
 | 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
