@@ -4,7 +4,7 @@ const config = {
   urls: {
     SITE_A_URL: process.env.SITE_A_URL || 'https://app.receitaviva.online/',
     SITE_B_URL: process.env.SITE_B_URL || 'https://mounjaro-de-los-pobres.lovable.app/',
-    SITE_C_URL: process.env.SITE_C_URL || 'https://monjarojapones.lovable.app/'
+    SITE_C_URL: process.env.SITE_C_URL || 'https://platano-mujeres.lovable.app/'
   },
 
   // Função para detectar dispositivo móvel

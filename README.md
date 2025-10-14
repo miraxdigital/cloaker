@@ -24,7 +24,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
 SITE_B_URL=https://mounjaro-de-los-pobres.lovable.app/
-SITE_C_URL=https://monjarojapones.lovable.app/
+SITE_C_URL=https://platano-mujeres.lovable.app/
 ```
 
 ## Exemplos de Uso
@@ -112,7 +112,7 @@ O sistema registra:
 # Configure as variáveis de ambiente
 SITE_A_URL=https://app.receitaviva.online/
 SITE_B_URL=https://mounjaro-de-los-pobres.lovable.app/
-SITE_C_URL=https://monjarojapones.lovable.app/
+SITE_C_URL=https://platano-mujeres.lovable.app/
 ```
 
 ### Teste Local
