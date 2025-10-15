@@ -23,7 +23,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://mounjaro-de-los-pobres.lovable.app/
+SITE_B_URL=https://adios-celilutis.lovable.app/
 SITE_C_URL=https://platano-mujeres.lovable.app/
 ```
 
@@ -32,13 +32,13 @@ SITE_C_URL=https://platano-mujeres.lovable.app/
 ### ✅ Redireciona para SITE_B (Mounjaro de los Pobres)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://mounjaro-de-los-pobres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://adios-celilutis.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://mounjaro-de-los-pobres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://adios-celilutis.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://mounjaro-de-los-pobres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://adios-celilutis.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
 ### ✅ Redireciona para SITE_C (Monjaro Japonês)
@@ -111,7 +111,7 @@ O sistema registra:
 ```bash
 # Configure as variáveis de ambiente
 SITE_A_URL=https://app.receitaviva.online/
-SITE_B_URL=https://mounjaro-de-los-pobres.lovable.app/
+SITE_B_URL=https://adios-celilutis.lovable.app/
 SITE_C_URL=https://platano-mujeres.lovable.app/
 ```
 
