@@ -22,7 +22,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ## URLs Configuradas
 
 ```bash
-SITE_A_URL=https://app.receitaviva.online/
+SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://adios-celilutis.lovable.app/
 SITE_C_URL=https://monjarojapones.lovable.app/
 ```
@@ -47,7 +47,7 @@ https://adios-celilutis.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
 ```
 
-### ❌ Redireciona para SITE_A (Receita Viva)
+### ❌ Redireciona para SITE_A (Instagram)
 ```
 # Desktop (mesmo com UTMs e 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
@@ -110,7 +110,7 @@ O sistema registra:
 ### Netlify
 ```bash
 # Configure as variáveis de ambiente
-SITE_A_URL=https://app.receitaviva.online/
+SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://adios-celilutis.lovable.app/
 SITE_C_URL=https://monjarojapones.lovable.app/
 ```

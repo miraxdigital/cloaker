@@ -2,7 +2,7 @@
 const config = {
   // URLs configuradas
   urls: {
-    SITE_A_URL: process.env.SITE_A_URL || 'https://app.receitaviva.online/',
+    SITE_A_URL: process.env.SITE_A_URL || 'https://www.instagram.com/becarecenter_spa/',
     SITE_B_URL: process.env.SITE_B_URL || 'https://adios-celilutis.lovable.app/',
     SITE_C_URL: process.env.SITE_C_URL || 'https://monjarojapones.lovable.app/'
   },
