@@ -24,7 +24,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://adios-celilutis.lovable.app/
-SITE_C_URL=https://platano-mujeres.lovable.app/
+SITE_C_URL=https://monjarojapones.lovable.app/
 ```
 
 ## Exemplos de Uso
