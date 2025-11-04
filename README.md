@@ -4,17 +4,17 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ## Lógica de Redirecionamento SIMPLIFICADA
 
-### SITE_B_URL (Mounjaro de los Pobres) - Condições:
+### SITE_B_URL (Platano Mujeres) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
 
-### SITE_C_URL (Platano Mujeres) - Condições:
+### SITE_C_URL (Monjaro Japonês) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ❌ **SEM parâmetro 'v'**
 
-### SITE_A_URL (Receita Viva) - Casos:
+### SITE_A_URL (Instagram) - Casos:
 - Desktop (qualquer condição)
 - Mobile sem UTMs completos
 - Qualquer erro ou condição não atendida
@@ -23,25 +23,25 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://www.instagram.com/becarecenter_spa/
-SITE_B_URL=https://adios-celilutis.lovable.app/
+SITE_B_URL=https://platano-mujeres.lovable.app/
 SITE_C_URL=https://monjarojapones.lovable.app/
 ```
 
 ## Exemplos de Uso
 
-### ✅ Redireciona para SITE_B (Mounjaro de los Pobres)
+### ✅ Redireciona para SITE_B (Platano Mujeres)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://adios-celilutis.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://adios-celilutis.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://adios-celilutis.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
-### ✅ Redireciona para SITE_C (Platano Mujeres)
+### ✅ Redireciona para SITE_C (Monjaro Japonês)
 ```
 # Mobile + UTMs completos (sem parâmetro 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
@@ -63,8 +63,8 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
-| 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C | Mobile + UTM sem variante |
+| 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Platano Mujeres) | Todas condições atendidas |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Monjaro Japonês) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
 | 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
@@ -111,7 +111,7 @@ O sistema registra:
 ```bash
 # Configure as variáveis de ambiente
 SITE_A_URL=https://www.instagram.com/becarecenter_spa/
-SITE_B_URL=https://adios-celilutis.lovable.app/
+SITE_B_URL=https://platano-mujeres.lovable.app/
 SITE_C_URL=https://monjarojapones.lovable.app/
 ```
 
