@@ -9,7 +9,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
 
-### SITE_C_URL (Monjaro Japonês) - Condições:
+### SITE_C_URL (Truco Sal Rosada) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ❌ **SEM parâmetro 'v'**
@@ -24,7 +24,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://monjarojapones.lovable.app/
+SITE_C_URL=https://truco-sal-rosada.lovable.app/vsl-inicio
 ```
 
 ## Exemplos de Uso
@@ -41,7 +41,7 @@ https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium
 https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
-### ✅ Redireciona para SITE_C (Monjaro Japonês)
+### ✅ Redireciona para SITE_C (Truco Sal Rosada)
 ```
 # Mobile + UTMs completos (sem parâmetro 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
@@ -64,7 +64,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Platano Mujeres) | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Monjaro Japonês) | Mobile + UTM sem variante |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Truco Sal Rosada) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
 | 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
@@ -112,7 +112,7 @@ O sistema registra:
 # Configure as variáveis de ambiente
 SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://monjarojapones.lovable.app/
+SITE_C_URL=https://truco-sal-rosada.lovable.app/vsl-inicio
 ```
 
 ### Teste Local
