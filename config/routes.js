@@ -4,7 +4,7 @@ const config = {
   urls: {
     SITE_A_URL: process.env.SITE_A_URL || 'https://www.instagram.com/becarecenter_spa/',
     SITE_B_URL: process.env.SITE_B_URL || 'https://platano-mujeres.lovable.app/',
-    SITE_C_URL: process.env.SITE_C_URL || 'https://truco-sal-rosada.lovable.app/vsl-inicio'
+    SITE_C_URL: process.env.SITE_C_URL || 'https://of.trucosalrosa.lat/vsl-inicio'
   },
 
   // Função para detectar dispositivo móvel

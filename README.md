@@ -24,7 +24,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://truco-sal-rosada.lovable.app/vsl-inicio
+SITE_C_URL=https://of.trucosalrosa.lat/vsl-inicio
 ```
 
 ## Exemplos de Uso
@@ -64,7 +64,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Platano Mujeres) | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Truco Sal Rosada) | Mobile + UTM sem variante |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Truco Sal Rosa) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
 | 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
@@ -112,7 +112,7 @@ O sistema registra:
 # Configure as variáveis de ambiente
 SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://truco-sal-rosada.lovable.app/vsl-inicio
+SITE_C_URL=https://of.trucosalrosa.lat/vsl-inicio
 ```
 
 ### Teste Local
