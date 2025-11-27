@@ -22,9 +22,9 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ## URLs Configuradas
 
 ```bash
-SITE_A_URL=https://www.instagram.com/becarecenter_spa/
+SITE_A_URL=https://desenvemfoco.com/new/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://of.trucosalrosa.lat/vsl-inicio
+SITE_C_URL=https://4m025y0l.xquiz.io/
 ```
 
 ## Exemplos de Uso
@@ -47,7 +47,7 @@ https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
 ```
 
-### ❌ Redireciona para SITE_A (Instagram)
+### ❌ Redireciona para SITE_A (Desenvem Foco)
 ```
 # Desktop (mesmo com UTMs e 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
@@ -64,7 +64,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Platano Mujeres) | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Truco Sal Rosa) | Mobile + UTM sem variante |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (xQuiz) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
 | 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
@@ -110,9 +110,9 @@ O sistema registra:
 ### Netlify
 ```bash
 # Configure as variáveis de ambiente
-SITE_A_URL=https://www.instagram.com/becarecenter_spa/
+SITE_A_URL=https://desenvemfoco.com/new/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://of.trucosalrosa.lat/vsl-inicio
+SITE_C_URL=https://4m025y0l.xquiz.io/
 ```
 
 ### Teste Local

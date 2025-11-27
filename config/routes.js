@@ -2,9 +2,9 @@
 const config = {
   // URLs configuradas
   urls: {
-    SITE_A_URL: process.env.SITE_A_URL || 'https://www.instagram.com/becarecenter_spa/',
+    SITE_A_URL: process.env.SITE_A_URL || 'https://desenvemfoco.com/new/',
     SITE_B_URL: process.env.SITE_B_URL || 'https://platano-mujeres.lovable.app/',
-    SITE_C_URL: process.env.SITE_C_URL || 'https://of.trucosalrosa.lat/vsl-inicio'
+    SITE_C_URL: process.env.SITE_C_URL || 'https://4m025y0l.xquiz.io/'
   },
 
   // Função para detectar dispositivo móvel
