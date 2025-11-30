@@ -24,7 +24,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://desenvemfoco.com/new/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://4m025y0l.xquiz.io/
+SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
 
 ## Exemplos de Uso
@@ -64,7 +64,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Platano Mujeres) | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (xQuiz) | Mobile + UTM sem variante |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Tes Metabolicos) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
 | 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
@@ -112,7 +112,7 @@ O sistema registra:
 # Configure as variáveis de ambiente
 SITE_A_URL=https://desenvemfoco.com/new/
 SITE_B_URL=https://platano-mujeres.lovable.app/
-SITE_C_URL=https://4m025y0l.xquiz.io/
+SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
 
 ### Teste Local
