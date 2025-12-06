@@ -4,17 +4,17 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ## Lógica de Redirecionamento SIMPLIFICADA
 
-### SITE_B_URL (Platano Mujeres) - Condições:
+### SITE_B_URL (Gelatina Bariatrica) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
 
-### SITE_C_URL (Truco Sal Rosada) - Condições:
+### SITE_C_URL (Tes Metabolicos) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ❌ **SEM parâmetro 'v'**
 
-### SITE_A_URL (Instagram) - Casos:
+### SITE_A_URL (Desenvem Foco) - Casos:
 - Desktop (qualquer condição)
 - Mobile sem UTMs completos
 - Qualquer erro ou condição não atendida
@@ -23,25 +23,25 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://desenvemfoco.com/new/
-SITE_B_URL=https://platano-mujeres.lovable.app/
+SITE_B_URL=https://gelatinabariatrica.xpages.co/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
 
 ## Exemplos de Uso
 
-### ✅ Redireciona para SITE_B (Platano Mujeres)
+### ✅ Redireciona para SITE_B (Gelatina Bariatrica)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://gelatinabariatrica.xpages.co/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://gelatinabariatrica.xpages.co/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://platano-mujeres.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://gelatinabariatrica.xpages.co/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
-### ✅ Redireciona para SITE_C (Truco Sal Rosada)
+### ✅ Redireciona para SITE_C (Tes Metabolicos)
 ```
 # Mobile + UTMs completos (sem parâmetro 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
@@ -63,7 +63,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
-| 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Platano Mujeres) | Todas condições atendidas |
+| 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Gelatina Bariatrica) | Todas condições atendidas |
 | 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Tes Metabolicos) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
@@ -111,7 +111,7 @@ O sistema registra:
 ```bash
 # Configure as variáveis de ambiente
 SITE_A_URL=https://desenvemfoco.com/new/
-SITE_B_URL=https://platano-mujeres.lovable.app/
+SITE_B_URL=https://gelatinabariatrica.xpages.co/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
 

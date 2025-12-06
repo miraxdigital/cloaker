@@ -3,7 +3,7 @@ const config = {
   // URLs configuradas
   urls: {
     SITE_A_URL: process.env.SITE_A_URL || 'https://desenvemfoco.com/new/',
-    SITE_B_URL: process.env.SITE_B_URL || 'https://platano-mujeres.lovable.app/',
+    SITE_B_URL: process.env.SITE_B_URL || 'https://gelatinabariatrica.xpages.co/',
     SITE_C_URL: process.env.SITE_C_URL || 'https://tesmetabolicos.xpages.co/'
   },
 
