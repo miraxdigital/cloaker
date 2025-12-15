@@ -4,7 +4,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ## Lógica de Redirecionamento SIMPLIFICADA
 
-### SITE_B_URL (Gelatina Bariatrica) - Condições:
+### SITE_B_URL (Cafe Quema Grasa) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
@@ -23,22 +23,22 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 
 ```bash
 SITE_A_URL=https://desenvemfoco.com/new/
-SITE_B_URL=https://gelatinabariatrica.xpages.co/
+SITE_B_URL=https://cafequemagrasa.lovable.app/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
 
 ## Exemplos de Uso
 
-### ✅ Redireciona para SITE_B (Gelatina Bariatrica)
+### ✅ Redireciona para SITE_B (Cafe Quema Grasa)
 ```
 # Mobile + UTMs completos + parâmetro 'v' com qualquer valor
-https://gelatinabariatrica.xpages.co/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
+https://cafequemagrasa.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
 
 # Mobile + UTMs + v=test
-https://gelatinabariatrica.xpages.co/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
+https://cafequemagrasa.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=test
 
 # Mobile + UTMs + v=abc
-https://gelatinabariatrica.xpages.co/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
+https://cafequemagrasa.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=abc
 ```
 
 ### ✅ Redireciona para SITE_C (Tes Metabolicos)
@@ -63,7 +63,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
-| 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Gelatina Bariatrica) | Todas condições atendidas |
+| 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Cafe Quema Grasa) | Todas condições atendidas |
 | 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Tes Metabolicos) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
@@ -111,7 +111,7 @@ O sistema registra:
 ```bash
 # Configure as variáveis de ambiente
 SITE_A_URL=https://desenvemfoco.com/new/
-SITE_B_URL=https://gelatinabariatrica.xpages.co/
+SITE_B_URL=https://cafequemagrasa.lovable.app/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
 
