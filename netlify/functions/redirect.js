@@ -46,7 +46,7 @@ exports.handler = async (event, context) => {
       hasUTM: debugInfo.hasRequiredUTM,
       hasVariant: debugInfo.hasVariant,
       target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Cafe Quema Grasa)' :
-              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Tes Metabolicos)' : 'SITE_A (Desenvem Foco)'
+              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Tes Metabolicos)' : 'SITE_A (Instagram BecarecenterSpa)'
     });
     
     // Return redirect response

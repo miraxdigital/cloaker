@@ -14,7 +14,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ❌ **SEM parâmetro 'v'**
 
-### SITE_A_URL (Desenvem Foco) - Casos:
+### SITE_A_URL (Instagram BecarecenterSpa) - Casos:
 - Desktop (qualquer condição)
 - Mobile sem UTMs completos
 - Qualquer erro ou condição não atendida
@@ -22,7 +22,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ## URLs Configuradas
 
 ```bash
-SITE_A_URL=https://desenvemfoco.com/new/
+SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://cafequemagrasa.lovable.app/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
@@ -47,7 +47,7 @@ https://cafequemagrasa.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
 ```
 
-### ❌ Redireciona para SITE_A (Desenvem Foco)
+### ❌ Redireciona para SITE_A (Instagram BecarecenterSpa)
 ```
 # Desktop (mesmo com UTMs e 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
@@ -110,7 +110,7 @@ O sistema registra:
 ### Netlify
 ```bash
 # Configure as variáveis de ambiente
-SITE_A_URL=https://desenvemfoco.com/new/
+SITE_A_URL=https://www.instagram.com/becarecenter_spa/
 SITE_B_URL=https://cafequemagrasa.lovable.app/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
