@@ -15,6 +15,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ❌ **SEM parâmetro 'v'**
 
 ### SITE_A_URL (Instagram BecarecenterSpa) - Casos:
+### SITE_A_URL (Chas Rotina 2025) - Casos:
 - Desktop (qualquer condição)
 - Mobile sem UTMs completos
 - Qualquer erro ou condição não atendida
@@ -22,7 +23,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ## URLs Configuradas
 
 ```bash
-SITE_A_URL=https://www.instagram.com/becarecenter_spa/
+SITE_A_URL=https://chasrotina2025.xpages.co/
 SITE_B_URL=https://cafequemagrasa.lovable.app/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
@@ -47,7 +48,7 @@ https://cafequemagrasa.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
 ```
 
-### ❌ Redireciona para SITE_A (Instagram BecarecenterSpa)
+### ❌ Redireciona para SITE_A (Chas Rotina 2025)
 ```
 # Desktop (mesmo com UTMs e 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
@@ -65,10 +66,10 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Cafe Quema Grasa) | Todas condições atendidas |
 | 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Tes Metabolicos) | Mobile + UTM sem variante |
-| 📱 Mobile | ❌ Não | ✅ Presente | SITE_A | UTMs incompletos |
-| 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A | Não é mobile |
-| 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A | Não é mobile |
-| 📱 Mobile | ❌ Não | ❌ Ausente | SITE_A | UTMs incompletos |
+| 📱 Mobile | ❌ Não | ✅ Presente | SITE_A (Chas Rotina 2025) | UTMs incompletos |
+| 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A (Chas Rotina 2025) | Não é mobile |
+| 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A (Chas Rotina 2025) | Não é mobile |
+| 📱 Mobile | ❌ Não | ❌ Ausente | SITE_A (Chas Rotina 2025) | UTMs incompletos |
 
 *UTM Completo = `utm_source` + `utm_campaign` + `utm_medium` + `utm_content`
 
@@ -110,7 +111,7 @@ O sistema registra:
 ### Netlify
 ```bash
 # Configure as variáveis de ambiente
-SITE_A_URL=https://www.instagram.com/becarecenter_spa/
+SITE_A_URL=https://chasrotina2025.xpages.co/
 SITE_B_URL=https://cafequemagrasa.lovable.app/
 SITE_C_URL=https://tesmetabolicos.xpages.co/
 ```
