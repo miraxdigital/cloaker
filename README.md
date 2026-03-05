@@ -10,7 +10,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
 
-### SITE_C_URL (Tes Metabolicos) - Condições:
+### SITE_C_URL (Ayuno Intermitente) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ❌ **SEM parâmetro 'v'**
@@ -26,7 +26,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://chasrotina2025.xpages.co/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
-SITE_C_URL=https://tesmetabolicos.xpages.co/
+SITE_C_URL=https://ayuno-intermitente.vercel.app/
 ```
 
 ## Exemplos de Uso
@@ -66,7 +66,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Tu Salud Feliz) | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Tes Metabolicos) | Mobile + UTM sem variante |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Ayuno Intermitente) | Mobile + UTM sem variante |
 | 📱 Mobile | ❌ Não | ✅ Presente | SITE_A (Chas Rotina 2025) | UTMs incompletos |
 | 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A (Chas Rotina 2025) | Não é mobile |
 | 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A (Chas Rotina 2025) | Não é mobile |
