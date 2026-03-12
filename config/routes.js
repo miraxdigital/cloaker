@@ -4,7 +4,7 @@ const config = {
   urls: {
     SITE_A_URL: process.env.SITE_A_URL || 'https://app.pilatesencasa.fit/',
     SITE_B_URL: process.env.SITE_B_URL || 'https://tusaludfeliz.lovable.app/',
-    SITE_C_URL: process.env.SITE_C_URL || 'https://tai-chi-es.vercel.app/'
+    SITE_C_URL: process.env.SITE_C_URL || 'https://ayuno-intermitente.vercel.app/'
   },
 
   // Função para detectar dispositivo móvel
