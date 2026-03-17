@@ -11,7 +11,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ✅ **Parâmetro 'v'**: Qualquer valor (ex: `v=1`, `v=test`, `v=abc`)
 
 ### SITE_C_URL (Tai Chi ES) - Condições:
-### SITE_C_URL (Ayuno Intermitente) - Condições:
+### SITE_C_URL (Jejum Metabólico) - Condições:
 ✅ **Dispositivo móvel** (Android, iOS, etc.) **E**  
 ✅ **Parâmetros UTM obrigatórios**: `utm_source`, `utm_campaign`, `utm_medium`, `utm_content` **E**  
 ❌ **SEM parâmetro 'v'**
@@ -30,7 +30,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://jejum67.foconasuasaude.com/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
-SITE_C_URL=https://ayuno-intermitente.vercel.app/
+SITE_C_URL=https://jejum-metabolico.vercel.app/
 ```
 
 ## Exemplos de Uso
@@ -48,7 +48,7 @@ https://tusaludfeliz.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=so
 ```
 
 ### ✅ Redireciona para SITE_C (Tes Metabolicos)
-### ✅ Redireciona para SITE_C (Ayuno Intermitente)
+### ✅ Redireciona para SITE_C (Jejum Metabólico)
 ```
 # Mobile + UTMs completos (sem parâmetro 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
@@ -115,7 +115,7 @@ O sistema registra:
 # Configure as variáveis de ambiente
 SITE_A_URL=https://jejum67.foconasuasaude.com/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
-SITE_C_URL=https://ayuno-intermitente.vercel.app/
+SITE_C_URL=https://jejum-metabolico.vercel.app/
 ```
 
 ### Teste Local
