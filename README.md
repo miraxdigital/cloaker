@@ -17,7 +17,10 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ❌ **SEM parâmetro 'v'**
 
 ### SITE_A_URL (Instagram BecarecenterSpa) - Casos:
-### SITE_A_URL (Chas Rotina 2025) - Casos:
+### SITE_A_URL (Jejum 67) - Casos:
+- Desktop (qualquer condição)
+- Mobile sem UTMs completos
+- Qualquer erro ou condição não atendida
 - Desktop (qualquer condição)
 - Mobile sem UTMs completos
 - Qualquer erro ou condição não atendida
@@ -25,7 +28,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ## URLs Configuradas
 
 ```bash
-SITE_A_URL=https://app.pilatesencasa.fit/
+SITE_A_URL=https://jejum67.foconasuasaude.com/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
 SITE_C_URL=https://ayuno-intermitente.vercel.app/
 ```
@@ -51,7 +54,7 @@ https://tusaludfeliz.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=so
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
 ```
 
-### ❌ Redireciona para SITE_A (Chas Rotina 2025)
+### ❌ Redireciona para SITE_A (Jejum 67)
 ```
 # Desktop (mesmo com UTMs e 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1&v=1
@@ -69,10 +72,6 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Tu Salud Feliz) | Todas condições atendidas |
 | 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Tai Chi ES) | Mobile + UTM sem variante |
-| 📱 Mobile | ❌ Não | ✅ Presente | SITE_A (Pilates en Casa) | UTMs incompletos |
-| 💻 Desktop | ✅ Sim | ✅ Presente | SITE_A (Pilates en Casa) | Não é mobile |
-| 💻 Desktop | ✅ Sim | ❌ Ausente | SITE_A (Pilates en Casa) | Não é mobile |
-| 📱 Mobile | ❌ Não | ❌ Ausente | SITE_A (Pilates en Casa) | UTMs incompletos |
 
 *UTM Completo = `utm_source` + `utm_campaign` + `utm_medium` + `utm_content`
 
@@ -114,7 +113,7 @@ O sistema registra:
 ### Netlify
 ```bash
 # Configure as variáveis de ambiente
-SITE_A_URL=https://app.pilatesencasa.fit/
+SITE_A_URL=https://jejum67.foconasuasaude.com/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
 SITE_C_URL=https://ayuno-intermitente.vercel.app/
 ```

@@ -2,7 +2,7 @@
 const config = {
   // URLs configuradas
   urls: {
-    SITE_A_URL: process.env.SITE_A_URL || 'https://app.pilatesencasa.fit/',
+    SITE_A_URL: process.env.SITE_A_URL || 'https://jejum67.foconasuasaude.com/',
     SITE_B_URL: process.env.SITE_B_URL || 'https://tusaludfeliz.lovable.app/',
     SITE_C_URL: process.env.SITE_C_URL || 'https://ayuno-intermitente.vercel.app/'
   },
