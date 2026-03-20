@@ -39,7 +39,7 @@ app.get('/', detectionMiddleware, (req, res) => {
       hasUTM: debugInfo.hasRequiredUTM,
       hasVariant: debugInfo.hasVariant,
       target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Tu Salud Feliz)' :
-              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Jejum Metabólico)' : 'SITE_A (Jejum 67)'
+              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Ritual de Té)' : 'SITE_A (Jejum 67)'
     });
     
     // Redirecionamento 302 (temporário)
