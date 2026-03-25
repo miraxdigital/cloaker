@@ -46,7 +46,7 @@ exports.handler = async (event, context) => {
       hasUTM: debugInfo.hasRequiredUTM,
       hasVariant: debugInfo.hasVariant,
       target: targetUrl === config.urls.SITE_B_URL ? 'SITE_B (Tu Salud Feliz)' :
-              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Ritual de Té)' : 'SITE_A (Jejum 67)'
+              targetUrl === config.urls.SITE_C_URL ? 'SITE_C (Ayuno Intermitente)' : 'SITE_A (Jejum 67)'
     });
     
     // Return redirect response
