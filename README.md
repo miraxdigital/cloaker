@@ -30,7 +30,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://jejum67.foconasuasaude.com/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
-SITE_C_URL=https://ayuno-intermitente.vercel.app/
+SITE_C_URL=https://ayuno-metabolico.vercel.app/
 ```
 
 ## Exemplos de Uso
@@ -48,7 +48,7 @@ https://tusaludfeliz.lovable.app/?utm_source=FB&utm_campaign=teste&utm_medium=so
 ```
 
 ### ✅ Redireciona para SITE_C (Tes Metabolicos)
-### ✅ Redireciona para SITE_C (Ritual de Té)
+### ✅ Redireciona para SITE_C (Ayuno Metabólico)
 ```
 # Mobile + UTMs completos (sem parâmetro 'v')
 https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&utm_medium=social&utm_content=ad1
@@ -71,7 +71,7 @@ https://seu-dominio.com/?utm_source=FB&utm_campaign=teste&v=1
 | Dispositivo | UTM Completo* | Parâmetro 'v' | Destino | Motivo |
 |-------------|---------------|----------------|---------|---------|
 | 📱 Mobile | ✅ Sim | ✅ Presente | SITE_B (Tu Salud Feliz) | Todas condições atendidas |
-| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Ritual de Té) | Mobile + UTM sem variante |
+| 📱 Mobile | ✅ Sim | ❌ Ausente | SITE_C (Ayuno Metabólico) | Mobile + UTM sem variante |
 
 *UTM Completo = `utm_source` + `utm_campaign` + `utm_medium` + `utm_content`
 
@@ -115,7 +115,7 @@ O sistema registra:
 # Configure as variáveis de ambiente
 SITE_A_URL=https://jejum67.foconasuasaude.com/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
-SITE_C_URL=https://ayuno-intermitente.vercel.app/
+SITE_C_URL=https://ayuno-metabolico.vercel.app/
 ```
 
 ### Teste Local
