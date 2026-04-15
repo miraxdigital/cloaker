@@ -30,7 +30,7 @@ Sistema de redirecionamento inteligente baseado em detecção de dispositivo mó
 ```bash
 SITE_A_URL=https://jejum67.foconasuasaude.com/
 SITE_B_URL=https://tusaludfeliz.lovable.app/
-SITE_C_URL=https://ayuno-metabolico.vercel.app/
+SITE_C_URL=https://www.ayunometabolico.lat/
 ```
 
 ## Exemplos de Uso
