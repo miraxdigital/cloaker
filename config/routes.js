@@ -4,7 +4,7 @@ const config = {
   urls: {
     SITE_A_URL: process.env.SITE_A_URL || 'https://www.vivasaude360.com/gelapp',
     SITE_B_URL: process.env.SITE_B_URL || 'https://tusaludfeliz.lovable.app/',
-    SITE_C_URL: process.env.SITE_C_URL || 'https://www.ayunometabolico.lat/'
+    SITE_C_URL: process.env.SITE_C_URL || 'https://www.monjarochia.online/'
   },
 
   // Função para detectar dispositivo móvel
